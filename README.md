@@ -1,4 +1,4 @@
-# PSUSphere
+# PSUSphere Docker
 
 PSUSphere is a Django-based student organization management system. It manages colleges, academic programs, students, organizations, and organization memberships.
 
@@ -11,6 +11,10 @@ PSUSphere is a Django-based student organization management system. It manages c
 - Manage organization memberships
 - Django Admin interface
 - Search and filter records in the Admin interface
+
+## Docker
+
+This project includes a `Dockerfile`, `docker-compose.yml`, `.dockerignore`, and `requirements.txt` for building and running the Django application with Docker.
 
 ## Authors
 
