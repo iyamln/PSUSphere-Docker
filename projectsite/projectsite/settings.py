@@ -21,12 +21,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-hfe#8(_8lr*+=!thp$915hags*&3h#x!)o4a6=nbxdi1584!p1'
-
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY',
+    'django-insecure-local-development-only-change-this'
+)
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'ch8968.pythonanywhere.com']
+ALLOWED_HOSTS = os.environ.get(
+    'DJANGO_ALLOWED_HOSTS',
+    '127.0.0.1,localhost,ch8968.pythonanywhere.com'
+).split(',')
 
 
 # Application definition
@@ -47,6 +52,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github', 
     'pwa',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'api',
 ]
 
 SITE_ID = 2
@@ -202,3 +210,12 @@ PWA_APP_DIR = "ltr"
 PWA_SERVICE_WORKER_PATH = os.path.join(
     BASE_DIR, "static/js/serviceworker.js"
 )
+
+REST_FRAMEWORK = {
+  'DEFAULT_AUTHENTICATION_CLASSES': [
+      'rest_framework.authentication.TokenAuthentication',
+  ],
+  'DEFAULT_PERMISSION_CLASSES': [
+      'rest_framework.permissions.IsAuthenticated',
+  ],
+}

@@ -44,4 +44,5 @@ urlpatterns = [
     path('orgmember_list/add', OrgMemberCreateView.as_view(), name='orgmember-add'),
     path('orgmember_list/<pk>', OrgMemberUpdateView.as_view(), name='orgmember-update'),
     path('orgmember_list/<pk>/delete', OrgMemberDeleteView.as_view(), name='orgmember-delete'),
+    path('api/', include('api.urls')),
 ]
