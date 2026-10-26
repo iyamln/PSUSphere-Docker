@@ -219,3 +219,27 @@ REST_FRAMEWORK = {
       'rest_framework.permissions.IsAuthenticated',
   ],
 }
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "SCOPE": ["profile", "email"],
+    },
+    "github": {
+        "SCOPE": ["user:email"],
+    },
+}
+
+if os.environ.get("GOOGLE_CLIENT_ID") and os.environ.get("GOOGLE_CLIENT_SECRET"):
+    SOCIALACCOUNT_PROVIDERS["google"]["APP"] = {
+        "client_id": os.environ["GOOGLE_CLIENT_ID"],
+        "secret": os.environ["GOOGLE_CLIENT_SECRET"],
+        "key": "",
+    }
+
+if os.environ.get("GITHUB_CLIENT_ID") and os.environ.get("GITHUB_CLIENT_SECRET"):
+    SOCIALACCOUNT_PROVIDERS["github"]["APP"] = {
+        "client_id": os.environ["GITHUB_CLIENT_ID"],
+        "secret": os.environ["GITHUB_CLIENT_SECRET"],
+        "key": "",
+    }

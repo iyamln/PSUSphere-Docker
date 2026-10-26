@@ -27,3 +27,5 @@ six==1.17.0
 sqlparse==0.5.5
 tzdata==2026.3
 urllib3==2.7.0
+djangorestframework==3.18.3
+pillow==13.0.0

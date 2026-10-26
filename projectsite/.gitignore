@@ -27,3 +27,17 @@ db.sqlite3-journal
 # PyCharm
 
 .idea/
+
+# Additional environment files
+.env.*
+!.env.example
+for_client/.env
+
+# Other virtual environments
+.venv/
+
+# Local database files
+*.sqlite3
+
+# Secrets and local configuration
+secrets.json
